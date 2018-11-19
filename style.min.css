@@ -1,0 +1,1 @@
+*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:lightgreen}header{height:15vh}h1{background:white}section{height:85vh;display:flex;align-items:flex-end}.road{background:#6b6868;height:150px;width:100vw;margin-bottom:6em}.lane-lines{height:50%;width:100vw;border-bottom:.4em dashed white}

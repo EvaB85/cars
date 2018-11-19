@@ -1,3 +1,8 @@
+$car-height: 200px;
+$car-width: 250px;
+$car-red: red;
+$car-blue: blue;
+
 * {
   box-sizing: border-box;
 }
@@ -36,4 +41,122 @@ section {
   height: 50%;
   width: 100vw;
   border-bottom: .4em dashed white;
+}
+
+.car-wrapper {
+  height: 40vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+%car {
+  position: relative;
+  width: $car-width;
+  height: $car-height;
+}
+
+%car__roof {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0 auto;
+  height: 45%;
+  width: 100%;
+}
+
+%car__window {
+  background: beige;
+  height: 90%;
+  width: 35%;
+  border: 20px solid black;
+  border-right: 10px solid black;
+  border-bottom: none;
+  border-radius: 100% 0 0 0;
+  z-index: 10;
+}
+
+%car__body {
+  position: absolute;
+  margin-bottom: 10%;
+  bottom: 0;
+  border-radius: 22px;
+  width: 100%;
+  height: 50%;
+}
+
+%car__tires {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 55%;
+  width: 70%;
+}
+
+%car__tire {
+  background: black;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.car {
+  @extend %car;
+}
+
+.car__roof {
+  @extend %car__roof;
+}
+
+.car__window {
+  @extend %car__window;
+
+  &--right {
+    transform: rotateY(180deg);
+  }
+
+  &--red {
+    border-color: $car-red;
+  }
+
+  &--blue {
+    border-color: $car-blue;
+  }
+}
+
+.car__body {
+  @extend %car__body;
+
+  &--red {
+    background: $car-red;
+  }
+
+  &--blue {
+    background: $car-blue;
+  }
+}
+
+.car__tires {
+  @extend %car__tires;
+
+  &__tire {
+    @extend %car__tire;
+  }
+}
+
+.car--blue {
+  align-self: flex-end;
+  margin: 0;
+  z-index: 10;
+  animation: cargo 4s 3 alternate ease-in-out forwards;
+}
+
+@keyframes cargo {
+  0% {
+    transform: translateX(-50vw);
+  }
+  100% {
+    transform: translateX(0) rotateX(-180deg);
+  }
 }
